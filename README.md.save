@@ -1,0 +1,23 @@
+#Comandos Docker
+
+Construir el contenedor:
+
+docker build --no-cache -t mymaria -f DockerfileM .
+
+Correr el contenedor "pwd" es la contraseña del usuario roo, puede ser cambiada por cualquier otra.
+
+docker run -p 3306:3306  --name dbalpine -e MYSQL_ROOT_PASSWORD=pwd -d mymaria
+
+Para crear la base de datos correpondiente a la palicación se ejecuta el siguiente comando:
+
+docker exec -i dbalpine sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" < /home/data/dbhlocalidades.sql -v'
+
+Para comprobar que la base de datos se creo correctamente:
+
+
+- docker exec -ti dbalpine sh
+
+Fuente principal:
+
+https://hub.docker.com/_/mariadb
+
