@@ -29,7 +29,7 @@ $ docker network create mynet
 
 $ docker-compser up -d
 
-3) Una vez los contenideores estén corriendo  se carla base de datos:
+3) Una vez los contenideores estén corriendo  se carga la base de datos:
 
 $ docker exec -i dbalpine sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" contactsflask < /home/data/contacts.sql -v'
 
@@ -37,6 +37,6 @@ $ docker exec -i dbalpine sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" cont
 
 ##Integrantes
 
-20191099011 EDSON ANDREI LADINO FRANCO
+20191099011 Edson Andrei Ladino Franco
 20202099033 Edda Camila Rodríguez Mojica
 20202099021 Néstor Camilo Beltrán Beltrán
