@@ -16,7 +16,7 @@ ncbeltranb/flask-python-db
 
 ##Pasos para hacer correr proyecto
 
-1) Crear una carpeta para que la base de datos sea persitente
+1) Crear una carpeta para que la base de datos sea persitente en la mismas carpeta  del proyecto
 
 $ mkdir mariadb
 
