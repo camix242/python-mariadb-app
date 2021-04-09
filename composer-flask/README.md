@@ -16,13 +16,13 @@ ncbeltranb/flask-python-db
 
 ##Pasos para hacer correr proyecto
 
-1) Crear una carpeta para que la base de datos sea persitente en la mismas carpeta  del proyecto
+1) Crear una carpeta para que la base de datos sea persitente en la mismas carpeta  del proyecto:
 
 $ mkdir mariadb
 
-2) Crear la red
+2) Crear la red:
 
-$ docker network create mynet:
+$ docker network create mynet
 
 
 2) Ejecutar el docker-composer:
