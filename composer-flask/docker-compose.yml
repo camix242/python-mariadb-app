@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  bd:
+    networks:
+      - mynet
+    image: ncbeltranb/flask-python-db:latest
+    ports:
+      - "3306:3306"
+    container_name: dbalpine
+    environment:
+      - MYSQL_ROOT_PASSWORD=pwd
+      - MYSQL_DATABASE=contactsflask
+    volumes:
+      - ./mariadb:/var/lib/mysql
+  flask:
+    networks:
+      - mynet
+    image: ncbeltranb/flask-python-app:latest
+    ports:
+      - "5000:5000"
+    container_name: app
+    depends_on:
+      - bd
+    # volumes:
+    #   - /home/ec2-user/compose/html/modules:/var/www/html/modules
+    #   - /home/ec2-user/compose/html/profiles:/var/www/html/profiles
+    #   - /home/ec2-user/compose/html/sites:/var/www/html/sites
+    #   - /home/ec2-user/compose/html/themes:/var/www/html/themes
+    #   - /var/www/html/modules
+    #   - /var/www/html/profiles
+    #   - /var/www/html/sites
+    #   - /var/www/html/themes
+networks:
+  mynet:
+    external: true
