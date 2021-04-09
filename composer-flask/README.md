@@ -1,47 +1,42 @@
-#Comandos Docker
+##Docker Composer APP Flask
 
-Para hacer correr el contenedor en una red
-
-$ docker network create some-network # Create the network
-
-
-##Contenedor de APP
-
-Ingresar a la carpeta APP
-
-$ docker build --no-cache -t my-python-app .
-
-$ docker run --net some-network -p 5000:5000 -it --rm --name my-running-app -d my-python-app
-
-##Contenedor de APP
-
-Para contruir el contenedor de base de datos ingresar a DB
-
-
-docker build --no-cache -t mymariadb -f Dockerfile .
+Se desarrolló una pequeña aplicación web basada en Python con el framework Flask y se usa como motor de base de datos Mariadb para realizar un CRUD de contactos
 
 
 
-$ docker run --net some-network -p 3306:3306  --name dbalpine -e MYSQL_ROOT_PASSWORD=pwd -e MYSQL_DATABASE=contactsflask -d mymariadb
+Se generaron y subieron a docker hub las imagenes para Python y base de datos que fueron llamadas en el docker-composer.yml.
 
-MYSQL_ROOT_PASSWORD representa la contraseña del usuario "root" que puede ser cambiada de ser necesario.
+Repositorio en Docker Hub para la parte de la app con python y flask:
+https://hub.docker.com/repository/docker/ncbeltranb/flask-python-app
+ncbeltranb/flask-python-app
+
+Repositorio en Docker Hub para la parte de base de datos:
+https://hub.docker.com/repository/docker/ncbeltranb/flask-python-db
+ncbeltranb/flask-python-db
+
+##Pasos para hacer correr proyecto
+
+1) Crear una carpeta para que la base de datos sea persitente
+
+$ mkdir mariadb
+
+2) Crear la red
+
+$ docker network create mynet:
 
 
-Para crear y llenar la base de datos de la aplicación "contactsflask"
-docker exec -i dbalpine sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" contactsflask < /home/data/contacts.sql -v'
+2) Ejecutar el docker-composer:
 
-# Valdación base de datos
+$ docker-compser up -d
 
-Ingresar al contendeor:
-docker exec -ti dbalpine sh
+3) Una vez los contenideores estén corriendo  se carla base de datos:
 
-Ingresar a MariaDB
+$ docker exec -i dbalpine sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD" contactsflask < /home/data/contacts.sql -v'
 
-mysql -p -> (Luego escribir la contraseña asignada)
+4) Acceder por el puero 5000 del host
 
-show databases; (Validar que la bd ese creada)
+##Integrantes
 
-
-#Fuente principal:
-
-https://hub.docker.com/_/mariadb
+20191099011 EDSON ANDREI LADINO FRANCO
+20202099033 Edda Camila Rodríguez Mojica
+20202099021 Néstor Camilo Beltrán Beltrán
