@@ -21,15 +21,6 @@ services:
     container_name: app
     depends_on:
       - bd
-    # volumes:
-    #   - /home/ec2-user/compose/html/modules:/var/www/html/modules
-    #   - /home/ec2-user/compose/html/profiles:/var/www/html/profiles
-    #   - /home/ec2-user/compose/html/sites:/var/www/html/sites
-    #   - /home/ec2-user/compose/html/themes:/var/www/html/themes
-    #   - /var/www/html/modules
-    #   - /var/www/html/profiles
-    #   - /var/www/html/sites
-    #   - /var/www/html/themes
 networks:
   mynet:
     external: true
